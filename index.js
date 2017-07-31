@@ -59,7 +59,6 @@ var achecker = function(options, callback) {
      function (err, json) {
 
      var summary = {
-      sessionID: json.resultset.summary.sessionID,
       errors: parseInt(json.resultset.summary.NumOfErrors),
       likelyProblems: parseInt(json.resultset.summary.NumOfLikelyProblems),
       potentialProblems: parseInt(json.resultset.summary.NumOfPotentialProblems)
@@ -69,8 +68,7 @@ var achecker = function(options, callback) {
      results.forEach(function(item, i, r){
       if(item.errorMsg){
         var url = item.errorMsg.match(/href="([^"]*)"/);
-        var text = item.errorMsg.match(/">([^"]*)<\/a>/);
-        r[i].errorMsg = {url: url[1], message: text[1]};
+        r[i].errorMsg = {url: url[1]};
       }
      });
 
