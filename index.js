@@ -59,9 +59,11 @@ var achecker = function(options, callback) {
      function (err, json) {
 
      var summary = {
+      status: json.resultset.summary.status,
       errors: parseInt(json.resultset.summary.NumOfErrors),
       likelyProblems: parseInt(json.resultset.summary.NumOfLikelyProblems),
-      potentialProblems: parseInt(json.resultset.summary.NumOfPotentialProblems)
+      potentialProblems: parseInt(json.resultset.summary.NumOfPotentialProblems),
+      guideline: json.resultset.summary.guidelines.guideline,
      };
 
      var results = json.resultset.results.result || {};
